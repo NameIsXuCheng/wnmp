@@ -14,6 +14,8 @@ return [
     // | 应用设置
     // +----------------------------------------------------------------------
 
+    // 应用命名空间
+    'app_namespace'          => 'app',
     // 应用调试模式
     'app_debug'              => true,
     // 应用Trace
@@ -27,7 +29,7 @@ return [
     // 注册的根命名空间
     'root_namespace'         => [],
     // 扩展函数文件
-    'extra_file_list'        => [THINK_PATH . 'helper' . EXT],
+    'extra_file_list'        => [THINK_PATH . 'helper' . EXT,APP_PATH . 'helper' . EXT],
     // 默认输出类型
     'default_return_type'    => 'html',
     // 默认AJAX 数据返回格式,可选json xml ...
@@ -58,7 +60,7 @@ return [
     // 禁止访问模块
     'deny_module_list'       => ['common'],
     // 默认控制器名
-    'default_controller'     => 'index',
+    'default_controller'     => 'Index',
     // 默认操作名
     'default_action'         => 'index',
     // 默认验证器
@@ -139,7 +141,9 @@ return [
     ],
 
     // 视图输出字符串内容替换
-    'view_replace_str'       => [],
+    'view_replace_str'       => [
+        '__PUBLIC__' => '/static',
+    ],
     // 默认跳转页面对应的模板文件
     'dispatch_success_tmpl'  => THINK_PATH . 'tpl' . DS . 'dispatch_jump.tpl',
     'dispatch_error_tmpl'    => THINK_PATH . 'tpl' . DS . 'dispatch_jump.tpl',
@@ -235,5 +239,25 @@ return [
         'type'      => 'bootstrap',
         'var_page'  => 'page',
         'list_rows' => 15,
+    ],
+
+    //验证码设置
+    'captcha' => [
+        // 指定验证码的字符
+        'codeSet' => '0',
+        // 验证码字体大小(px)
+        'fontSize' => 18,
+        // 是否画混淆曲线
+        'useCurve' => false,
+        // 验证码图片高度
+        'imageH' => 40,
+        // 验证码图片宽度
+        'imageW' => 120,
+        // 验证码位数
+        'length' => 4,
+        // 验证成功后是否重置
+        'reset' => true,
+        'useNoise' => false,
+        'bg' => array(255, 255, 255)
     ],
 ];
