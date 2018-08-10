@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登陆界面</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!--<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>-->
+    <script type="application/javascript" src="__PUBLIC__/js/jquery.js"></script>
+    <script type="application/javascript" src="__PUBLIC__/lib/layer/2.4/layer.js"></script>
+    <style>
+        body{
+            background-image: url("__PUBLIC__/img/login.jpg");
+            background-repeat:no-repeat;
+            background-size: cover;
+            background-position: center center;
+            background-attachment: fixed;
+            -moz-background-size:cover;
+        }
+        .login_box{
+            width:35%;
+            height: 22%;
+            background: rgba(255,255,255,.5);
+            position:absolute;
+            left:0;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+<div class="login_box">
+    <div class="form-horizontal" style="margin:20px 20px">
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-3 control-label">用户名称：</label>
+            <div class="col-sm-8">
+                <input type="text" name="user" class="form-control" id="inputEmail3" placeholder="请输入用户名">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputPassword3" class="col-sm-3 control-label">密码：</label>
+            <div class="col-sm-8">
+                <input type="password" name="pwd" class="form-control" id="inputPassword3" placeholder="请输入密码">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputPassword3" class="col-sm-3 control-label">验证码：</label>
+            <div class="col-sm-5">
+                <input type="password" name="yzm" class="form-control" id="inputYzm3" placeholder="请输入验证码">
+            </div>
+            <div class="col-sm-4">
+                <img onclick="javascript:this.src+='?';" title="验证码" style="float: left; margin-left: 12px;"
+                     src="{{:captcha_src()}}" height="33">
+            </div>
+        </div>
+        <!--<div class="form-group">-->
+            <!--<div class="col-sm-offset-2 col-sm-10">-->
+                <!--<div class="checkbox">-->
+                    <!--<label>-->
+                        <!--<input type="checkbox"> Remember me-->
+                    <!--</label>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+        <div class="form-group">
+            <div class="col-sm-offset-5 col-sm-5">
+                <button type="submit" onclick="validate_form(this)" class="btn btn-success">登陆</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+<script type="application/javascript">
+    function validate_form(thisForm) {
+        var user = $("input[name=user]").val();
+        var pwd = $("input[name=pwd]").val();
+        var yzm = $("input[name=yzm]").val();
+        var s = true;
+
+        if (user==null||user=="") {
+            layer.msg('用户名不能为空',{icon:0,offset:'0',shift:0.1});
+            $("input[name=user]").focus();
+            s = false;
+            return false
+        }
+
+        if (pwd==null||pwd=="") {
+            layer.msg('密码不能为空',{icon:0,offset:'0',shift:0.1});
+            $("input[name=pwd]").focus();
+            s = false;
+            return false
+        }
+        if (yzm==null||yzm=="") {
+            layer.msg('验证码不能为空',{icon:0,offset:'0',shift:0.1});
+            $("input[name=pwd]").focus();
+            s = false;
+            return false
+        }
+
+        if(s){
+            $.post("{:url('index/login')}",{
+                user:user,
+                pwd: pwd
+            },function (e) {
+                if(e.code == 1){
+                    layer.msg(e.data,{icon:1,offset:'0',shift:0.1});
+                    var url = "{:url('user/info')}";
+                    window.location.replace(url);
+                }else{
+                    layer.msg(e.data,{icon:0,offset:'0',shift:0.1});
+                }
+            })
+        }
+    }
+</script>
+</html>
