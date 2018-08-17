@@ -9,8 +9,7 @@
 namespace app\admin\controller;
 
 
-use app\admin\model\User;
-use think\Controller;
+use app\admin\model\Login;
 use think\Request;
 
 class Index extends Base {
@@ -19,15 +18,24 @@ class Index extends Base {
     }
 
     public function login(Request $request){
-        $user_name = $request->param('user');
-        $pwd = $request->param('pwd');
-       $user = new User();
+        $user_name = trim($request->param('user'));
+        $pwd = trim($request->param('pwd'));
+        $yzm = trim($request->param('yzm'));
 
-       $res = $user->isLogin($user_name,$pwd);
-       if ($res){
-           return json(['code'=>1,'data'=>'登陆成功']);
+       $user = new Login();
+       $res = $user->isLogin($user_name,$pwd,$yzm);
+        $data = [];
+       switch ($res){
+           case 0:
+               $data = ['code'=>0,'data'=>'验证码错误','yzm'=>$yzm];
+               break;
+           case 1:
+               $data = ['code'=>1,'data'=>'登陆成功'];
+               break;
+           case 2:
+               $data = ['code'=>0,'data'=>'用户名或密码错误'];
+               break;
        }
-       return json(['code'=>0,'data'=>'用户名或密码错误']);
+       return json($data);
     }
-
 }

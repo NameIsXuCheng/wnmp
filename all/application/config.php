@@ -244,7 +244,7 @@ return [
     //验证码设置
     'captcha' => [
         // 指定验证码的字符
-        'codeSet' => '0',
+        'codeSet' => '0123456789',
         // 验证码字体大小(px)
         'fontSize' => 18,
         // 是否画混淆曲线
@@ -257,7 +257,7 @@ return [
         'length' => 4,
         // 验证成功后是否重置
         'reset' => true,
-        'useNoise' => false,
+        'useNoise' => true,
         'bg' => array(255, 255, 255)
     ],
 ];

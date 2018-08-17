@@ -10,7 +10,19 @@ namespace app\admin\controller;
 
 
 class User extends Base{
-    public function info(){
+    public function index(){
+        return view();
+    }
+
+    public function head(){
+        return view();
+    }
+
+    public function left(){
+        return view();
+    }
+
+    public function main(){
         return view();
     }
 }
