@@ -38,4 +38,9 @@ class Index extends Base {
        }
        return json($data);
     }
+
+    public function login_out(){
+        session_unset();
+        return view('index/index');
+    }
 }

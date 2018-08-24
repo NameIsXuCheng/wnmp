@@ -1,6 +1,5 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE HTML>
+<html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>首页左侧导航</title>
@@ -14,143 +13,32 @@
 <div class="container">
 
     <div class="leftsidebar_box">
-        <a href="main.html" target="main">
+        <a href="{:url('user/index')}" target="_parent">
             <div class="line">
                 <img src="__PUBLIC__/img/coin01.png"/>&nbsp;&nbsp;首页
             </div>
         </a>
+
+        {foreach name='data' item='info'}
         <dl class="system_log">
             <dt>
                 <img class="icon1" src="__PUBLIC__/img/coin03.png"/>
-                <img class="icon2" src="__PUBLIC__/img/coin04.png"/> 网站管理
+                <img class="icon2" src="__PUBLIC__/img/coin04.png"/> {$info['name']}
                 <img class="icon3" src="__PUBLIC__/img/coin19.png"/>
                 <img class="icon4" src="__PUBLIC__/img/coin20.png"/>
             </dt>
+            {if $info['child']}
+            {foreach name='info["child"]' item='vo'}
             <dd>
                 <img class="coin11" src="__PUBLIC__/img/coin111.png"/>
                 <img class="coin22" src="__PUBLIC__/img/coin222.png"/>
-                <a class="cks" href="tab.html" target="main">会员管理</a>
+                <a class="cks" href="{$vo.url}" target="main">{$vo.name}</a>
                 <img class="icon5" src="__PUBLIC__/img/coin21.png"/>
             </dd>
+            {/foreach}
+            {/if}
         </dl>
-        <dl class="system_log">
-            <dt>
-                <img class="icon1" src="__PUBLIC__/img/coin01.png"/>
-                <img class="icon2" src="__PUBLIC__/img/coin02.png"/> 公共管理
-                <img class="icon3" src="__PUBLIC__/img/coin19.png"/>
-                <img class="icon4" src="__PUBLIC__/img/coin20.png"/>
-            </dt>
-            <dd>
-                <img class="coin11" src="__PUBLIC__/img/coin111.png"/>
-                <img class="coin22" src="__PUBLIC__/img/coin222.png"/>
-                <a class="cks" href="p3.html" target="main">广告管理</a>
-                <img class="icon5" src="__PUBLIC__/img/coin21.png"/>
-            </dd>
-            <dd>
-                <img class="coin11" src="__PUBLIC__/img/coin111.png"/>
-                <img class="coin22" src="__PUBLIC__/img/coin222.png"/>
-                <a class="cks" href="p2.html" target="main">反馈管理</a>
-                <img class="icon5" src="__PUBLIC__/img/coin21.png"/>
-            </dd>
-        </dl>
-        <dl class="system_log">
-            <dt>
-                <img class="icon1" src="__PUBLIC__/img/coin07.png"/>
-                <img class="icon2" src="__PUBLIC__/img/coin08.png"/> 会员管理
-                <img class="icon3" src="__PUBLIC__/img/coin19.png"/>
-                <img class="icon4" src="__PUBLIC__/img/coin20.png"/>
-            </dt>
-            <dd>
-                <img class="coin11" src="__PUBLIC__/img/coin111.png"/>
-                <img class="coin22" src="__PUBLIC__/img/coin222.png"/>
-                <a href="p1.html" target="main" class="cks">会员管理</a>
-                <img class="icon5" src="__PUBLIC__/img/coin21.png"/>
-            </dd>
-        </dl>
-        <dl class="system_log">
-            <dt>
-                <img class="icon1" src="__PUBLIC__/img/coin10.png"/>
-                <img class="icon2" src="__PUBLIC__/img/coin09.png"/> 其他管理
-                <img class="icon3" src="__PUBLIC__/img/coin19.png"/>
-                <img class="icon4" src="__PUBLIC__/img/coin20.png"/>
-            </dt>
-            <dd>
-                <img class="coin11" src="__PUBLIC__/img/coin111.png"/>
-                <img class="coin22" src="__PUBLIC__/img/coin222.png"/><a class="cks">其他管理</a>
-                <img class="icon5" src="__PUBLIC__/img/coin21.png"/>
-            </dd>
-        </dl>
-        <dl class="system_log">
-            <dt>
-                <img class="icon1" src="__PUBLIC__/img/coin11.png"/>
-                <img class="icon2" src="__PUBLIC__/img/coin12.png"/> 新闻管理
-                <img class="icon3" src="__PUBLIC__/img/coin19.png"/>
-                <img class="icon4" src="__PUBLIC__/img/coin20.png"/>
-            </dt>
-            <dd>
-                <img class="coin11" src="__PUBLIC__/img/coin111.png"/>
-                <img class="coin22" src="__PUBLIC__/img/coin222.png"/><a class="cks">新闻管理</a>
-                <img class="icon5" src="__PUBLIC__/img/coin21.png"/>
-            </dd>
-        </dl>
-        <dl class="system_log">
-            <dt>
-                <img class="icon1" src="__PUBLIC__/img/coin14.png"/>
-                <img class="icon2" src="__PUBLIC__/img/coin13.png"/> 心愿管理
-                <img class="icon3" src="__PUBLIC__/img/coin19.png"/>
-                <img class="icon4" src="__PUBLIC__/img/coin20.png"/>
-            </dt>
-            <dd>
-                <img class="coin11" src="__PUBLIC__/img/coin111.png"/>
-                <img class="coin22" src="__PUBLIC__/img/coin222.png"/><a class="cks">心愿管理</a>
-                <img class="icon5" src="__PUBLIC__/img/coin21.png"/>
-            </dd>
-        </dl>
-        <dl class="system_log">
-            <dt>
-                <img class="icon1" src="__PUBLIC__/img/coin15.png"/>
-                <img class="icon2" src="__PUBLIC__/img/coin16.png"/> 预警管理
-                <img class="icon3" src="__PUBLIC__/img/coin19.png"/>
-                <img class="icon4" src="__PUBLIC__/img/coin20.png"/>
-            </dt>
-            <dd>
-                <img class="coin11" src="__PUBLIC__/img/coin111.png"/>
-                <img class="coin22" src="__PUBLIC__/img/coin222.png"/>
-                <a class="cks">预警管理</a>
-                <img class="icon5" src="__PUBLIC__/img/coin21.png"/>
-            </dd>
-        </dl>
-        <dl class="system_log">
-            <dt>
-                <img class="icon1" src="__PUBLIC__/img/coin17.png"/>
-                <img class="icon2" src="__PUBLIC__/img/coin18.png"/> 收支管理
-                <img class="icon3" src="__PUBLIC__/img/coin19.png"/>
-                <img class="icon4" src="__PUBLIC__/img/coin20.png"/>
-            </dt>
-            <dd>
-                <img class="coin11" src="__PUBLIC__/img/coin111.png"/>
-                <img class="coin22" src="__PUBLIC__/img/coin222.png"/><a class="cks">收支管理</a>
-                <img class="icon5" src="__PUBLIC__/img/coin21.png"/>
-            </dd>
-        </dl>
-        <dl class="system_log">
-            <dt>
-                <img class="icon1" src="__PUBLIC__/img/coinL1.png"/>
-                <img class="icon2" src="__PUBLIC__/img/coinL2.png"/> 系统管理
-                <img class="icon3" src="__PUBLIC__/img/coin19.png"/>
-                <img class="icon4" src="__PUBLIC__/img/coin20.png"/>
-            </dt>
-            <dd>
-                <img class="coin11" src="__PUBLIC__/img/coin111.png"/>
-                <img class="coin22" src="__PUBLIC__/img/coin222.png"/><a href="changepwd.html" target="main" class="cks">修改密码</a>
-                <img class="icon5" src="__PUBLIC__/img/coin21.png"/>
-            </dd>
-            <dd>
-                <img class="coin11" src="__PUBLIC__/img/coin111.png"/>
-                <img class="coin22" src="__PUBLIC__/img/coin222.png"/><a class="cks">退出</a>
-                <img class="icon5" src="__PUBLIC__/img/coin21.png"/>
-            </dd>
-        </dl>
+        {/foreach}
 
     </div>
 

@@ -1,5 +1,5 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+﻿<!DOCTYPE HTML>
+<html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>头部</title>
@@ -15,7 +15,7 @@
 			<img class="headLogo" src="__PUBLIC__/img/logLOGO.png"/>
 		</div>
 		<div class="headR">
-			<span style="color:#FFF">欢迎：admin</span> <a href="head2.html" rel="external">【退出】</a>
+			<span style="color:#FFF">欢迎：{$Think.session.login_name}</span> <a href="{:url('index/login_out')}" target="_parent" rel="external">【退出】</a>
 		</div>
 	</div>
 </body>

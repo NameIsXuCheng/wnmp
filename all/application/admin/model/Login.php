@@ -32,7 +32,8 @@ class Login extends Model{
     }
 
     public function setSeesion($data){
-        Session::set('name',$data['user_name']);
-        Session::set('power',$data['power']);
+        Session::set('login_id',$data['id']);
+        Session::set('login_name',$data['user_name']);
+        Session::set('login_power',$data['power']);
     }
 }
